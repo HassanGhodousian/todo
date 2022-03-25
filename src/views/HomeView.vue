@@ -1,18 +1,20 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h2>home view</h2>
+    {{ count }}
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { computed } from "@vue/runtime-core";
+import { useStore } from "vuex";
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  setup() {
+    const store = useStore();
+    const count = computed(() => store.state.count);
+    return { count };
+  },
+};
 </script>
+
+<style></style>
