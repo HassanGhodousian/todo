@@ -26,7 +26,7 @@ export default {
     function filterTasks() {
       store.dispatch("filterTasks", number.value);
     }
-    return { filterTasks };
+    return { filterTasks, number };
   },
 };
 </script>

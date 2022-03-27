@@ -35,24 +35,22 @@ const store = createStore({
         });
     },
     async filterTasks({ commit }, limit) {
-      console.log(commit, limit);
-
-      // await axios
-      //   .get("https://jsonplaceholder.typicode.com/todos")
-      //   .then(function (response) {
-      //     commit("setTasks", response.data);
-      //   })
-      //   .catch(function (error) {
-      //     Swal.fire({
-      //       title: error,
-      //       text: "Do you want to continue",
-      //       icon: "error",
-      //       confirmButtonText: "Cool",
-      //     });
-      //   })
-      //   .then(function () {
-      //     // always executed
-      //   });
+      await axios
+        .get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`)
+        .then(function (response) {
+          commit("setTasks", response.data);
+        })
+        .catch(function (error) {
+          Swal.fire({
+            title: error,
+            text: "Do you want to continue",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+        })
+        .then(function () {
+          // always executed
+        });
     },
   },
   modules: {},
